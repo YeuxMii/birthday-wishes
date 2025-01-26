@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌺</title>
   <style>
-
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -16,6 +15,7 @@
       height: 100vh;
       background-color: #efe4c4;
       overflow: hidden;
+      flex-direction: column;
     }
     
     .page1, .page2 {
@@ -65,15 +65,17 @@
 
     .page2 {
       display: flex;
-      height: 100vh;
+      height: auto;
       color: white;
       position: relative;
+      flex-direction: row;
     }
 
     .left-half {
       width: 50%;
-      background: url('9922720e0cf3d7ca1a3b84e6feb5f8066963a98e.jpeg@f_auto.jpeg') no-repeat center center;
+      background: url('9922720e0cf3d7ca1a3b84e6feb5f8066963a98e.jpeg@f_auto.jpeg 14-40-53-237.jpeg') no-repeat center center;
       background-size: cover;
+      height: 100%;
     }
 
     .right-half {
@@ -84,11 +86,12 @@
       align-items: center;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
       position: relative;
+      padding: 20px;
     }
 
     .flower-font {
       font-family: 'KaiTi', 'STKaiti', sans-serif;
-      font-size: 65px;
+      font-size: 3vw; /* Using viewport width for responsiveness */
       font-weight: bold;
       color: #c34c60;
       text-shadow: 2px 2px 10px #f1878a;
@@ -107,7 +110,7 @@
 
     .poetry {
       font-family: 'SimSun', 'Songti SC', serif;
-      font-size: 35px;
+      font-size: 2vw; /* Using viewport width for responsiveness */
       color: #ef8f7f;
       margin-top: 40px;
       line-height: 1.8;
@@ -139,6 +142,47 @@
       100% {
         transform: scale(4);
         opacity: 0;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .page1 h1 {
+        font-size: 24px;
+      }
+
+      .page1 p {
+        font-size: 18px;
+      }
+
+      .photo-container img {
+        max-height: 200px;
+      }
+
+      .btn {
+        font-size: 16px;
+      }
+
+      .page2 {
+        flex-direction: column; /* Stack vertically in small screens */
+        height: auto;
+      }
+
+      .left-half, .right-half {
+        width: 100%; /* Full width for small screens */
+        height: 50%;
+      }
+
+      .flower-font {
+        font-size: 6vw; /* Adjust font size for smaller screens */
+      }
+
+      .poetry {
+        font-size: 4vw; /* Adjust font size for smaller screens */
       }
     }
   </style>
