@@ -189,8 +189,9 @@
 <body>
 
   <!-- 音乐播放器 -->
-  <audio id="background-music" autoplay loop>
+  <audio id="background-music" loop>
     <source src="https://raw.githubusercontent.com/YeuxMii/birthday-wishes/main/宋祖英-好日子.mp3" type="audio/mp3">
+    您的浏览器不支持音频播放。
   </audio>
 
   <div class="page1">
@@ -220,9 +221,10 @@
     // 获取音频元素
     const audio = document.getElementById('background-music');
 
-    audio.addEventListener('canplaythrough', function() {
-      audio.currentTime = 3;
-    });
+    // 确保音频能够在页面加载时播放
+    window.onload = function() {
+      audio.play();
+    };
 
     function goToPage2() {
       document.querySelector('.page1').style.display = 'none';
