@@ -221,12 +221,12 @@
     // 获取音频元素
     const audio = document.getElementById('background-music');
 
-    // 确保音频能够在页面加载时播放
-    window.onload = function() {
-      audio.play();
-    };
-
+    // 修改 goToPage2 函数，点击按钮后播放音频
     function goToPage2() {
+      // 播放音乐
+      audio.play();
+      
+      // 切换到第二页
       document.querySelector('.page1').style.display = 'none';
       document.querySelector('.page2').style.display = 'flex';
 
