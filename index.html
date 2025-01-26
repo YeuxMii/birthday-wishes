@@ -190,7 +190,7 @@
 
   <!-- 音乐播放器 -->
   <audio id="background-music" autoplay loop>
-    <source src="https://www.ihaoge.net/server/1/251048604.mp3" type="audio/mp3">
+    <source src="http://lx.sycdn.kuwo.cn/fb5957ed61a1f5f788f84854e2df1f3b/6795ec3a/resource/n2/96/92/3216531606.mp3" type="audio/mp3">
     您的浏览器不支持音频播放。
   </audio>
 
@@ -221,9 +221,8 @@
     // 获取音频元素
     const audio = document.getElementById('background-music');
 
-    // 音频加载完成后开始播放，且跳过前2秒
     audio.addEventListener('canplaythrough', function() {
-      audio.currentTime = 2; // 跳过前2秒
+      audio.currentTime = 3;
     });
 
     function goToPage2() {
