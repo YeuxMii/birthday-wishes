@@ -17,7 +17,7 @@
       overflow: hidden;
       flex-direction: column;
     }
-    
+
     .page1, .page2 {
       text-align: center;
       width: 100%;
@@ -60,7 +60,7 @@
       max-width: 100%;
       height: auto;
       max-height: 300px;
-      border-radius: 10px; 
+      border-radius: 10px;
     }
 
     .page2 {
@@ -73,7 +73,7 @@
 
     .left-half {
       width: 50%;
-      background: url('9922720e0cf3d7ca1a3b84e6feb5f8066963a98e.jpeg@f_auto.jpeg') no-repeat center center;
+      background: url('9922720e0cf3d7ca1a3b84e6feb5f8066963a98e.jpeg@f_auto.jpeg 14-40-53-237.jpeg') no-repeat center center;
       background-size: cover;
       height: 100%;
     }
@@ -91,7 +91,7 @@
 
     .flower-font {
       font-family: 'KaiTi', 'STKaiti', sans-serif;
-      font-size: 3vw; /* Using viewport width for responsiveness */
+      font-size: 3vw;
       font-weight: bold;
       color: #c34c60;
       text-shadow: 2px 2px 10px #f1878a;
@@ -110,7 +110,7 @@
 
     .poetry {
       font-family: 'SimSun', 'Songti SC', serif;
-      font-size: 2vw; /* Using viewport width for responsiveness */
+      font-size: 2vw;
       color: #ef8f7f;
       margin-top: 40px;
       line-height: 1.8;
@@ -145,7 +145,6 @@
       }
     }
 
-    /* Responsive Design */
     @media (max-width: 600px) {
       body {
         padding: 10px;
@@ -168,26 +167,32 @@
       }
 
       .page2 {
-        flex-direction: column; /* Stack vertically in small screens */
+        flex-direction: column;
         height: auto;
       }
 
       .left-half, .right-half {
-        width: 100%; /* Full width for small screens */
+        width: 100%;
         height: 50%;
       }
 
       .flower-font {
-        font-size: 6vw; /* Adjust font size for smaller screens */
+        font-size: 6vw;
       }
 
       .poetry {
-        font-size: 4vw; /* Adjust font size for smaller screens */
+        font-size: 4vw;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- 音乐播放器 -->
+  <audio id="background-music" autoplay loop>
+    <source src="https://www.ihaoge.net/server/1/251048604.mp3" type="audio/mp3">
+    您的浏览器不支持音频播放。
+  </audio>
 
   <div class="page1">
     <h1>2025.1.26</h1>
@@ -213,6 +218,14 @@
   </div>
 
   <script>
+    // 获取音频元素
+    const audio = document.getElementById('background-music');
+
+    // 音频加载完成后开始播放，且跳过前2秒
+    audio.addEventListener('canplaythrough', function() {
+      audio.currentTime = 2; // 跳过前2秒
+    });
+
     function goToPage2() {
       document.querySelector('.page1').style.display = 'none';
       document.querySelector('.page2').style.display = 'flex';
