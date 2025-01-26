@@ -206,7 +206,7 @@
         <img src="WechatIMG46.jpg" alt="照片">
     </div>
     <button class="btn" onclick="goToPage2()">点我看看叭</button>
-    <p class="loading" id="loading">Loading...</p> <!-- Add Loading text -->
+    <p class="loading" id="loading">Loading... <span id="countdown">30</span>秒</p> <!-- Add countdown here -->
   </div>
 
   <div class="page2">
@@ -227,10 +227,21 @@
     // 获取音频和加载提示元素
     const audio = document.getElementById('background-music');
     const loadingText = document.getElementById('loading');
+    const countdownElement = document.getElementById('countdown');
+    let countdownTime = 30; // 倒计时30秒
 
     function goToPage2() {
       // 显示 "Loading..." 提示
       loadingText.style.display = 'block';
+
+      // 每秒更新倒计时
+      const countdownInterval = setInterval(() => {
+        countdownTime--;
+        countdownElement.textContent = countdownTime; // 更新倒计时显示
+        if (countdownTime <= 0) {
+          clearInterval(countdownInterval); // 倒计时结束，清除定时器
+        }
+      }, 1000);
 
       // 音频加载完成后执行
       audio.oncanplaythrough = function() {
