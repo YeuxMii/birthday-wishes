@@ -63,8 +63,14 @@
       border-radius: 10px;
     }
 
+    .loading {
+      font-size: 24px;
+      color: #333;
+      display: none; /* Initially hidden */
+    }
+
     .page2 {
-      display: flex;
+      display: none;
       height: auto;
       color: white;
       position: relative;
@@ -201,9 +207,10 @@
         <img src="WechatIMG46.jpg" alt="照片">
     </div>
     <button class="btn" onclick="goToPage2()">点我看看叭</button>
+    <p class="loading" id="loading">Loading...</p> <!-- Add Loading text -->
   </div>
 
-  <div class="page2" style="display: none;">
+  <div class="page2">
     <div class="left-half"></div>
     <div class="right-half">
       <div class="fireworks"></div>
@@ -218,21 +225,29 @@
   </div>
 
   <script>
-    // 获取音频元素
+    // 获取音频和加载提示元素
     const audio = document.getElementById('background-music');
+    const loadingText = document.getElementById('loading');
 
-    // 修改 goToPage2 函数，点击按钮后播放音频
     function goToPage2() {
-      // 播放音乐
-      audio.play().catch(function(error) {
-        console.log("播放音频时出现错误:", error);
-      });
-      
-      // 切换到第二页
-      document.querySelector('.page1').style.display = 'none';
-      document.querySelector('.page2').style.display = 'flex';
+      // 显示 "Loading..." 提示
+      loadingText.style.display = 'block';
 
-      createFireworks();
+      // 音频加载完成后执行
+      audio.oncanplaythrough = function() {
+        // 音频加载完毕，播放音频
+        audio.play();
+        
+        // 隐藏 Loading 提示，显示第二页
+        loadingText.style.display = 'none';
+        document.querySelector('.page1').style.display = 'none';
+        document.querySelector('.page2').style.display = 'flex';
+
+        createFireworks();
+      };
+
+      // 开始加载音频
+      audio.load();
     }
 
     function createFireworks() {
